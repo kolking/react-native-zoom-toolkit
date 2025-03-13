@@ -108,23 +108,25 @@ export const usePanCommons = (options: PanCommmonOptions) => {
       return;
     }
 
-    const overScrollFraction =
-      Math.max(container.width.value, container.height.value) * 1.5;
+    // const overScrollFraction =
+    //   Math.max(container.width.value, container.height.value) * 1.5;
 
     if (isWithinBoundX.value) {
       translate.x.value = toX;
     } else {
-      const fraction = Math.abs(Math.abs(toX) - boundX) / overScrollFraction;
-      const frictionX = friction(clamp(fraction, 0, 1));
-      translate.x.value += e.changeX * frictionX;
+      // const fraction = Math.abs(Math.abs(toX) - boundX) / overScrollFraction;
+      // const frictionX = friction(clamp(fraction, 0, 1));
+      // translate.x.value += e.changeX * frictionX;
+      translate.x.value += e.changeX / 3;
     }
 
     if (isWithinBoundY.value) {
       translate.y.value = toY;
     } else {
-      const fraction = Math.abs(Math.abs(toY) - boundY) / overScrollFraction;
-      const frictionY = friction(clamp(fraction, 0, 1));
-      translate.y.value += e.changeY * frictionY;
+      // const fraction = Math.abs(Math.abs(toY) - boundY) / overScrollFraction;
+      // const frictionY = friction(clamp(fraction, 0, 1));
+      // translate.y.value += e.changeY * frictionY;
+      translate.y.value += e.changeY / 3;
     }
   };
 
