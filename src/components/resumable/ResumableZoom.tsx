@@ -190,6 +190,11 @@ const ResumableZoom: React.FC<ResumableZoomPropsWithRef> = (props) => {
   const pan = Gesture.Pan()
     .withTestId('pan')
     .enabled(panEnabled && gesturesEnabled)
+    .onTouchesDown((e, state) => {
+      if (scale.value <= 1) {
+        state.fail();
+      }
+    })
     .maxPointers(1)
     .onStart(onPanStart)
     .onChange(onPanChange)
