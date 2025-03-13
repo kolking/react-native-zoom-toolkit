@@ -27,6 +27,7 @@ export type ResumableZoomProps = Partial<{
   panEnabled: boolean;
   pinchEnabled: boolean;
   maxScale: SizeVector<number> | number;
+  doubleTapScale: number;
   pinchCenteringMode: PinchCenteringMode;
   onSwipe: (direction: SwipeDirection) => void;
   onUpdate: (e: CommonZoomState<number>) => void;

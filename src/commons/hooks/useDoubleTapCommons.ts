@@ -16,6 +16,7 @@ type DoubleTapOptions = {
   scale: SharedValue<number>;
   minScale: number;
   maxScale: SharedValue<number>;
+  doubleTapScale: number;
   scaleOffset: SharedValue<number>;
   boundsFn: BoundsFuction;
   onGestureEnd?: () => void;
@@ -26,7 +27,8 @@ export const useDoubleTapCommons = ({
   translate,
   scale,
   minScale,
-  maxScale,
+  //maxScale,
+  doubleTapScale,
   scaleOffset,
   boundsFn,
   onGestureEnd,
@@ -36,8 +38,8 @@ export const useDoubleTapCommons = ({
 
     const originX = event.x - container.width.value / 2;
     const originY = event.y - container.height.value / 2;
-    const toScale =
-      scale.value >= maxScale.value * 0.8 ? minScale : maxScale.value;
+    const toScale = scale.value > 1 ? minScale : doubleTapScale;
+      // scale.value >= maxScale.value * 0.8 ? minScale : maxScale.value;
 
     const { x, y } = pinchTransform({
       toScale: toScale,
